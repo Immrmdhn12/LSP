@@ -1,0 +1,30 @@
+<?php
+
+if (isset($_POST["beli"])) {
+    $qty = $_POST["qty"];
+    if($qty > $produk['stok_barang']){
+      echo "
+      <script type='text/javascript'>
+        alert('Jumlah Pesanan Melebihi Batas Stok!');
+        window.location= 'index.php'
+      </script>
+      ";
+    }
+    if($qty <= 0){
+      echo "
+      <script type='text/javascript'>
+        alert('Jumlah Pesanan Tidak Valid!');
+        window.location= 'index.php'
+      </script>
+      ";
+    }
+    $_SESSION["cart"][$id] = $qty;
+
+    echo "
+    <script type='text/javascript'>
+        alert('Produk Berhasil Ditambahkan Ke Keranjang Belanja!');
+        window.location= 'keranjang.php'
+    </script>
+    ";
+}
+?>
